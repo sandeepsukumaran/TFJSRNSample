@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,8 +15,20 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import * as tf from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-react-native';
 
-const App: () => React$Node = () => {
+const App: React.FC<> = () => {
+  const [isTfReady, setIsTfReady] = useState(false);
+
+  useEffect(() => {
+    async function tfSetup() {
+      await tf.ready();
+      setIsTfReady(true);
+    }
+    tfSetup();
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -41,9 +53,9 @@ const App: () => React$Node = () => {
               <Text style={styles.sectionDescription} />
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionTitle}>TF Status</Text>
               <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
+                {isTfReady ? 'Ready' : 'Not ready'}
               </Text>
             </View>
           </View>
