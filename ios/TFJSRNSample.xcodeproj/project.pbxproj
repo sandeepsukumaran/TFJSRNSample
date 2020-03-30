@@ -194,7 +194,6 @@
 				6163B2B8E2169CF70164F78E /* Pods-TFJSRNSample-tvOSTests.debug.xcconfig */,
 				2533EC41D10656DAC72F1C45 /* Pods-TFJSRNSample-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
